@@ -1,58 +1,65 @@
 package com.macro.mall.portal.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import com.macro.mall.portal.service.OmsPortalOrderService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 
 /**
- * 订单管理Controller
- * Created by macro on 2018/8/30.
+ * 订单管理Controller Created by macro on 2018/8/30.
  */
 @Controller
-@Api(tags = "OmsPortalOrderController",description = "订单管理")
+@Api(tags = "OmsPortalOrderController", description = "订单管理")
 @RequestMapping("/order")
 public class OmsPortalOrderController {
     @Autowired
     private OmsPortalOrderService portalOrderService;
+
     @ApiOperation("根据购物车信息生成确认单信息")
-    @RequestMapping(value = "/generateConfirmOrder",method = RequestMethod.POST)
+    @PostMapping(value = "/generateconfirmorder")
     @ResponseBody
-    public Object generateConfirmOrder(){
+    public CommonResult generateConfirmOrder() {
         ConfirmOrderResult confirmOrderResult = portalOrderService.generateConfirmOrder();
-        return new CommonResult().success(confirmOrderResult);
+        return new CommonResult(confirmOrderResult);
     }
 
     @ApiOperation("根据购物车信息生成订单")
-    @RequestMapping(value = "/generateOrder",method = RequestMethod.POST)
+    @PostMapping(value = "/generateOrder")
     @ResponseBody
-    public Object generateOrder(@RequestBody OrderParam orderParam){
+    public Object generateOrder(@RequestBody OrderParam orderParam) {
         return portalOrderService.generateOrder(orderParam);
     }
+
     @ApiOperation("支付成功的回调")
-    @RequestMapping(value = "/paySuccess",method = RequestMethod.POST)
+    @PostMapping(value = "/paySuccess")
     @ResponseBody
-    public Object paySuccess(@RequestParam Long orderId){
+    public Object paySuccess(@RequestParam Long orderId) {
         return portalOrderService.paySuccess(orderId);
     }
 
     @ApiOperation("自动取消超时订单")
-    @RequestMapping(value = "/cancelTimeOutOrder",method = RequestMethod.POST)
+    @PostMapping(value = "/cancelTimeOutOrder")
     @ResponseBody
-    public Object cancelTimeOutOrder(){
+    public Object cancelTimeOutOrder() {
         return portalOrderService.cancelTimeOutOrder();
     }
 
     @ApiOperation("取消单个超时订单")
-    @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
+    @PostMapping(value = "/cancelOrder")
     @ResponseBody
-    public Object cancelOrder(Long orderId){
+    public Object cancelOrder(Long orderId) {
         portalOrderService.sendDelayMessageCancelOrder(orderId);
-        return new CommonResult().success(null);
+        return CommonResult.buildSuccessResponseWithoutData();
     }
 }
