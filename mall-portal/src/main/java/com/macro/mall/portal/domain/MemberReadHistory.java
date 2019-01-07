@@ -1,24 +1,19 @@
 package com.macro.mall.portal.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.Date;
 
 /**
- * 用户商品浏览历史记录
- * Created by macro on 2018/8/3.
+ * 用户商品浏览历史记录 Created by macro on 2018/8/3.
  */
-@Document
+//@Document
 public class MemberReadHistory {
-    @Id
+    // @Id
     private String id;
-    @Indexed
+    // @Indexed
     private Long memberId;
     private String memberNickname;
     private String memberIcon;
-    @Indexed
+    // @Indexed
     private Long productId;
     private String productName;
     private String productPic;

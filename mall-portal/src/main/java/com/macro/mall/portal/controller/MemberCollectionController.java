@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.macro.mall.model.MemberProductCollection;
 import com.macro.mall.portal.domain.CommonResult;
-import com.macro.mall.portal.domain.MemberProductCollection;
 import com.macro.mall.portal.service.MemberCollectionService;
 
 import io.swagger.annotations.Api;

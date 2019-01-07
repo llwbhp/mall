@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.macro.mall.model.MemberReadHistory;
 import com.macro.mall.portal.domain.CommonResult;
-import com.macro.mall.portal.domain.MemberReadHistory;
 import com.macro.mall.portal.service.MemberReadHistoryService;
 
 import io.swagger.annotations.Api;
@@ -43,8 +43,8 @@ public class MemberReadHistoryController {
     @ApiOperation("删除浏览记录")
     @PostMapping(value = "/delete")
     @ResponseBody
-    public CommonResult delete(@RequestParam("ids") List<String> ids) {
-        int count = memberReadHistoryService.delete(ids);
+    public CommonResult delete(@RequestParam("ids") List<Long> ids, Long memberId) {
+        int count = memberReadHistoryService.delete(ids, memberId);
         if (count > 0) {
             return new CommonResult(count);
         } else {

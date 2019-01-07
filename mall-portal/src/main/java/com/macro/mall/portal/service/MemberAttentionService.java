@@ -1,12 +1,11 @@
 package com.macro.mall.portal.service;
 
-import com.macro.mall.portal.domain.MemberBrandAttention;
-
 import java.util.List;
 
+import com.macro.mall.model.MemberBrandAttention;
+
 /**
- * 会员关注Service
- * Created by macro on 2018/8/2.
+ * 会员关注Service Created by macro on 2018/8/2.
  */
 public interface MemberAttentionService {
     /**

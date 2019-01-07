@@ -1,33 +1,36 @@
-package com.macro.mall.portal.domain;
+package com.macro.mall.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
+public class MemberBrandAttention implements Serializable {
+    private Long id;
 
-/**
- * 会员关注的品牌 Created by macro on 2018/8/2.
- */
-//@Document
-public class MemberBrandAttention {
-    @Id
-    private String id;
-    // @Indexed
     private Long memberId;
+
     private String memberNickname;
+
     private String memberIcon;
-    // @Indexed
+
     private Long brandId;
+
     private String brandName;
+
     private String brandLogo;
+
     private String brandCity;
+
     private Integer brandAttentionCount;
+
     private Date createTime;
 
-    public String getId() {
+    private static final long serialVersionUID = 1L;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -101,5 +104,26 @@ public class MemberBrandAttention {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", memberId=").append(memberId);
+        sb.append(", memberNickname=").append(memberNickname);
+        sb.append(", memberIcon=").append(memberIcon);
+        sb.append(", brandId=").append(brandId);
+        sb.append(", brandName=").append(brandName);
+        sb.append(", brandLogo=").append(brandLogo);
+        sb.append(", brandCity=").append(brandCity);
+        sb.append(", brandAttentionCount=").append(brandAttentionCount);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

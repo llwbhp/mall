@@ -1,12 +1,8 @@
 package com.macro.mall.portal.domain;
 
-import lombok.Getter;
-
 /**
- * 消息队列枚举配置
- * Created by macro on 2018/9/14.
+ * 消息队列枚举配置 Created by macro on 2018/9/14.
  */
-@Getter
 public enum QueueEnum {
     /**
      * 消息通知队列
@@ -35,4 +31,77 @@ public enum QueueEnum {
         this.name = name;
         this.routeKey = routeKey;
     }
+
+    /**
+     * 
+     * getter method
+     * 
+     * @return the exchange
+     * 
+     */
+
+    public String getExchange() {
+        return exchange;
+    }
+
+    /**
+     * 
+     * setter method
+     * 
+     * @param exchange the exchange to set
+     * 
+     */
+
+    public void setExchange(String exchange) {
+        this.exchange = exchange;
+    }
+
+    /**
+     * 
+     * getter method
+     * 
+     * @return the name
+     * 
+     */
+
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 
+     * setter method
+     * 
+     * @param name the name to set
+     * 
+     */
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 
+     * getter method
+     * 
+     * @return the routeKey
+     * 
+     */
+
+    public String getRouteKey() {
+        return routeKey;
+    }
+
+    /**
+     * 
+     * setter method
+     * 
+     * @param routeKey the routeKey to set
+     * 
+     */
+
+    public void setRouteKey(String routeKey) {
+        this.routeKey = routeKey;
+    }
+
 }
